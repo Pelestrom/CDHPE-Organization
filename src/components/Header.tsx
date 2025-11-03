@@ -119,9 +119,6 @@ const Header = () => {
           )}
         </div>
       </header>
-
-      {/* Spacer to offset fixed header so page content is not hidden under it */}
-      <div className="h-16" aria-hidden="true" />
     </>
   );
 };
