@@ -1,0 +1,315 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CDHPE Design System - Inspired by blue/green gradient logo 
+All colors MUST be HSL for semantic tokens.
+*/
+
+@layer base {
+  :root {
+    /* Base colors inspired by CDHPE logo */
+    --background: 0 0% 100%;
+    --foreground: 210 20% 15%;
+
+    /* Card system */
+    --card: 0 0% 100%;
+    --card-foreground: 210 20% 15%;
+
+    /* Popover system */
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 15%;
+
+    /* Primary - CDHPE Blue (simplified) */
+    --primary: 205 70% 35%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 205 60% 50%;
+    --primary-dark: 205 80% 25%;
+
+    /* Secondary - CDHPE Green (simplified) */
+    --secondary: 155 45% 40%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 155 40% 55%;
+    --secondary-dark: 155 50% 30%;
+
+    /* Neutral system */
+    --muted: 210 15% 96%;
+    --muted-foreground: 210 10% 50%;
+
+    /* Accent - Softer blue-green */
+    --accent: 165 45% 92%;
+    --accent-foreground: 210 20% 15%;
+
+    /* Status colors */
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 120 60% 50%;
+    --success-foreground: 0 0% 100%;
+
+    /* UI elements */
+    --border: 210 15% 88%;
+    --input: 210 15% 96%;
+    --ring: 190 65% 45%;
+
+    /* Design tokens */
+    --radius: 0.75rem;
+
+    /* CDHPE specific solid backgrounds - simplified */
+    --gradient-primary: hsl(var(--primary));
+    --gradient-hero: linear-gradient(135deg, hsl(205 70% 30%) 0%, hsl(155 45% 35%) 100%);
+    --gradient-subtle: hsl(var(--background));
+
+  /* Shadows - use your primary color with transparency */
+  --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+  --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+  --shadow-3d: 0 8px 32px -8px hsl(var(--primary) / 0.2), 0 0 0 1px hsl(var(--primary) / 0.1);
+
+  /* 3D Perspective */
+  --perspective: 1000px;
+  --transform-3d: preserve-3d;
+
+  /* Animations */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-3d: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode with CDHPE colors */
+    --background: 210 20% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 210 20% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 210 20% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 190 65% 55%;
+    --primary-foreground: 210 20% 8%;
+    --primary-light: 190 65% 75%;
+    --primary-dark: 190 65% 45%;
+
+    --secondary: 120 60% 60%;
+    --secondary-foreground: 210 20% 8%;
+    --secondary-light: 120 60% 80%;
+    --secondary-dark: 120 60% 50%;
+
+    --muted: 210 15% 15%;
+    --muted-foreground: 210 10% 70%;
+
+    --accent: 165 30% 20%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 70% 65%;
+    --destructive-foreground: 210 20% 8%;
+    --success: 120 60% 60%;
+    --success-foreground: 210 20% 8%;
+
+    --border: 210 15% 20%;
+    --input: 210 15% 15%;
+    --ring: 190 65% 55%;
+
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(165 55% 55%) 50%, hsl(var(--secondary)) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+
+    --shadow-primary: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-secondary: 0 10px 30px -10px hsl(var(--secondary) / 0.3);
+    --shadow-elegant: 0 20px 40px -10px hsl(0 0% 0% / 0.5);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  perspective: var(--perspective);
+}
+
+body {
+  font-feature-settings: "rlig" 1, "calt" 1;
+  transform-style: var(--transform-3d);
+}
+}
+
+@layer components {
+  /* CDHPE Component Styles */
+  .gradient-text {
+    @apply text-primary;
+  }
+
+  .gradient-bg {
+    @apply bg-primary;
+  }
+
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .subtle-gradient {
+    @apply bg-background;
+  }
+
+  .shadow-primary {
+    box-shadow: var(--shadow-primary);
+  }
+
+  .shadow-secondary {
+    box-shadow: var(--shadow-secondary);
+  }
+
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Custom button styles */
+  .btn-hero {
+    @apply bg-primary text-white font-semibold py-3 px-6 rounded-xl shadow-primary hover:bg-primary-dark transition-all duration-300;
+  }
+
+  .btn-outline-hero {
+    @apply border-2 border-primary text-primary bg-transparent font-semibold py-3 px-6 rounded-xl hover:bg-primary hover:text-white transition-smooth;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-elegant hover:-translate-y-1;
+  }
+
+  /* Focus states for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  /* 3D Animations */
+  .animate-3d-float {
+    animation: float-3d 6s ease-in-out infinite;
+  }
+
+  .animate-parallax {
+    transform: translateZ(-1px) scale(2);
+  }
+
+  /* Card 3D Effects */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: var(--transition-3d);
+  }
+
+  .card-3d:hover {
+    transform: rotateX(5deg) rotateY(-5deg) translateZ(20px);
+    box-shadow: var(--shadow-3d);
+  }
+
+  /* Button 3D Effects */
+  .button-3d {
+    transform-style: preserve-3d;
+    transition: var(--transition-3d);
+    position: relative;
+  }
+
+  .button-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    transform: translateZ(-2px);
+    border-radius: inherit;
+    opacity: 0.8;
+    transition: var(--transition-3d);
+  }
+
+  .button-3d:hover {
+    transform: translateZ(8px);
+  }
+
+  .button-3d:hover::before {
+    transform: translateZ(-8px);
+  }
+
+  /* Transparent Hover Buttons */
+  .btn-transparent {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: transparent;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-transparent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+  }
+
+  .btn-transparent:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .btn-transparent:hover::before {
+    left: 100%;
+  }
+
+  /* Parallax Scrolling */
+  .parallax-container {
+    perspective: var(--perspective);
+    overflow-x: hidden;
+  }
+}
